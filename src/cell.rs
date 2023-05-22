@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 use std::cell::{Cell, RefCell};
+use std::fmt::Debug;
 
 #[allow(dead_code)]
 #[derive(Debug)]

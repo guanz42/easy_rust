@@ -1,7 +1,7 @@
 #![allow(dead_code)]
+
 use core::fmt;
-// Tell the compiler to be quiet
-use std::{error::Error, mem::size_of}; // This gives the size of a type
+use std::error::Error;
 
 trait JustATrait {} // We will implement this on everything
 
@@ -43,6 +43,8 @@ impl JustATrait for ArrayAndI8 {}
 
 #[test]
 fn test_box() {
+    use std::mem::size_of;
+
     println!(
         "{}, {}, {}, {}, {}",
         size_of::<EnumOfNumbers>(),
@@ -100,7 +102,7 @@ fn return_errors(intput: u8) -> Result<String, Box<dyn Error>> {
 fn test_dyn_trait() {
     let vec_of_u8s = vec![0_u8, 1, 80];
 
-    let fourth = vec_of_u8s.get(3).unwrap_or_else(|| {
+    let _fourth = vec_of_u8s.get(3).unwrap_or_else(|| {
         if vec_of_u8s.get(0).is_some() {
             &vec_of_u8s[0]
         } else {
@@ -108,7 +110,7 @@ fn test_dyn_trait() {
         }
     });
 
-    let all = vec_of_u8s.iter().all(|x| x > &2);
+    let _all = vec_of_u8s.iter().all(|x| x > &2);
 
     let double_vec = vec_of_u8s
         .iter()
